@@ -2,9 +2,9 @@ const APIV1 = '/api/v1'
 const APIV2 = '/api/v2'
 
 module.exports = {
-  name: 'AntD Admin',
-  prefix: 'antdAdmin',
-  footerText: 'Ant Design Admin  © 2017 zuiidea',
+  name: '桴之科测试管理系统',
+  prefix: '桴之科测试管理系统',
+  footerText: '桴之科测试管理系统  © 2017 桴之科',
   logo: '/logo.svg',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
@@ -25,5 +25,13 @@ module.exports = {
     weather: `${APIV1}/weather`,
     v1test: `${APIV1}/test`,
     v2test: `${APIV2}/test`,
+    projectMenu: `${APIV1}/project/menu`,
+    projectList: `${APIV1}/project/list`,
+    projectSub: `${APIV1}/project/sub`,
+    projectInterface: `${APIV1}/project/interface`,
+    projectDataModal: `${APIV1}/project/dataModal`,
+    projectGroup: `${APIV1}/project/group`,
+    interfaceDetail: `${APIV1}/project/interface/detail`,
+    dataModalDetail: `${APIV1}/project/dataModal/detail`,
   },
 }

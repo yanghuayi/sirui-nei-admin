@@ -42,15 +42,16 @@
     }
   }
   box-shadow: @shadow-2;
-  position: relative;
-  display: flex;
+  position: fixed;
+  width: e('calc(100% - 200px)');
+  transition: all .3s linear;
   justify-content: space-between;
   height: 56px;
+  top: 0;
   z-index: 9;
   display: flex;
   align-items: center;
   background-color: #fff;
-
   .rightWarpper {
     display: flex;
     padding-right: 16px;
@@ -89,4 +90,7 @@
       border-right: 0;
     }
   }
+}
+.siderFold {
+  width: e('calc(100% - 80px)');
 }

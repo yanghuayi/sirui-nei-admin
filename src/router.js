@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route, Redirect, routerRedux } from 'dva/router'
+import { Switch, Route, Redirect, routerRedux, Router } from 'dva/router'
 import dynamic from 'dva/dynamic'
 import App from 'routes/app'
+import { LocaleProvider } from 'antd'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 
 const { ConnectedRouter } = routerRedux
 
@@ -64,28 +66,42 @@ const Routers = function ({ history, app }) {
       component: () => import('./routes/post/'),
     },
   ]
-
+  const Project = dynamic({
+    app,
+    models: () => [import('./models/project')],
+    component: () => import('./routes/project/'),
+  })
+  const ProjectSub = dynamic({
+    app,
+    models: () => [import('./models/project')],
+    component: () => import('./routes/project/rightPage/ProjectSub'),
+  })
   return (
-    <ConnectedRouter history={history}>
-      <App>
-        <Switch>
-          <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
-          {
-            routes.map(({ path, ...dynamics }, key) => (
-              <Route key={key}
-                exact
-                path={path}
-                component={dynamic({
-                  app,
-                  ...dynamics,
-                })}
-              />
-            ))
-          }
-          <Route component={error} />
-        </Switch>
-      </App>
-    </ConnectedRouter>
+    <LocaleProvider locale={zhCN}>
+      <ConnectedRouter history={history}>
+        <App>
+          <Switch>
+            <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
+            {
+              routes.map(({ path, ...dynamics }, key) => (
+                <Route key={key}
+                  exact
+                  apps={app}
+                  path={path}
+                  component={dynamic({
+                    app,
+                    ...dynamics,
+                  })}
+                />
+              ))
+            }
+            <Route exact path='/project' render={props => <Project apps={app} {...props} />} />
+            <Route exact path='/project/sub/:id' render={props => <ProjectSub {...props} />} />
+            <Route component={error} />
+          </Switch>
+        </App>
+      </ConnectedRouter>
+    </LocaleProvider>
   )
 }
 

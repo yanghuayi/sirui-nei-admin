@@ -15,7 +15,7 @@ import '../themes/index.less'
 import './app.less'
 
 const { Content, Footer, Sider } = Layout
-const { Header, Bread, styles } = MyLayout
+const { Header, styles } = MyLayout
 const { prefix, openPages } = config
 
 let lastHref
@@ -78,11 +78,6 @@ const App = ({
     },
   }
 
-  const breadProps = {
-    menu,
-    location,
-  }
-
   if (openPages && openPages.includes(pathname)) {
     return (<div>
       <Loader fullScreen spinning={loading.effects['app/query']} />
@@ -109,16 +104,12 @@ const App = ({
         >
           {siderProps.menu.length === 0 ? null : <MyLayout.Sider {...siderProps} />}
         </Sider>}
-        <Layout style={{ height: '100vh', overflow: 'scroll' }} id="mainContainer">
+        <Layout style={{ height: '100vh', paddingTop: '60px', overflow: 'scroll', position: 'relative', }} id="mainContainer">
           <BackTop target={() => document.getElementById('mainContainer')} />
           <Header {...headerProps} />
           <Content>
-            <Bread {...breadProps} />
             {hasPermission ? children : <Error />}
           </Content>
-          <Footer >
-            {config.footerText}
-          </Footer>
         </Layout>
       </Layout>
     </div>

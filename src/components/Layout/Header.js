@@ -4,7 +4,7 @@ import { Menu, Icon, Popover, Layout } from 'antd'
 import classnames from 'classnames'
 import styles from './Header.less'
 import Menus from './Menu'
-
+import Bread from './Bread'
 const { SubMenu } = Menu
 
 const Header = ({
@@ -21,8 +21,12 @@ const Header = ({
     navOpenKeys,
     changeOpenKeys,
   }
+  const breadProps = {
+    menu,
+    location,
+  }
   return (
-    <Layout.Header className={styles.header}>
+    <Layout.Header className={classnames({ [styles.header]: true, [styles.siderFold]: siderFold })}>
       {isNavbar
         ? <Popover placement="bottomLeft" onVisibleChange={switchMenuPopover} visible={menuPopoverVisible} overlayClassName={styles.popovermenu} trigger="click" content={<Menus {...menusProps} />}>
           <div className={styles.button}>
@@ -35,6 +39,7 @@ const Header = ({
         >
           <Icon type={classnames({ 'menu-unfold': siderFold, 'menu-fold': !siderFold })} />
         </div>}
+      <Bread {...breadProps} />
       <div className={styles.rightWarpper}>
         <div className={styles.button}>
           <Icon type="mail" />

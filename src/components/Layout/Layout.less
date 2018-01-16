@@ -7,12 +7,17 @@
 
   .ant-layout-sider {
     transition: all 0.3s;
-
+    background-color: #010101;
+    .ant-menu-dark {
+      background-color: #010101;
+    }
+    .ant-menu-dark .ant-menu-sub {
+      background-color: #232323;
+    }
     .ant-menu-root {
       height: ~"calc(100vh - 144px)";
       overflow-x: hidden;
       border-right: none;
-
       &::-webkit-scrollbar-thumb {
         background-color: transparent;
       }
@@ -34,7 +39,7 @@
   }
 
   .ant-layout-content {
-    padding: 24px;
+    padding: 12px;
   }
 
   .ant-layout-footer {
@@ -128,7 +133,8 @@
 
 .bread {
   margin-bottom: 24px;
-
+  position: absolute;
+  left: 80px;
   :global {
     .ant-breadcrumb {
       display: flex;

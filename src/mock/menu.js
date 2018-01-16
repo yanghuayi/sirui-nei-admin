@@ -9,6 +9,21 @@ let database = [
     route: '/dashboard',
   },
   {
+    id: '8',
+    bpid: '1',
+    icon: 'appstore-o',
+    name: '项目管理',
+    route: '/project',
+  },
+  {
+    id: '81',
+    mpid: '-1',
+    bpid: '8',
+    name: '项目详情',
+    icon: 'profile',
+    route: '/project/sub/:id',
+  },
+  {
     id: '2',
     bpid: '1',
     name: 'Users',
