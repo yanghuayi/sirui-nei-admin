@@ -2,6 +2,7 @@ import React from 'react'
 import { List, Card, Tooltip, Icon, Avatar } from 'antd'
 import numeral from 'numeral'
 import {connect} from 'dva'
+import { routerRedux } from 'dva/router'
 
 import styles from './projectSub.less'
 
@@ -17,7 +18,7 @@ const formatWan = (val) => {
   return result
 }
 
-const ProjectSub = ({projectSub, loading}) => {
+const ProjectSub = ({projectSub, loading, dispatch}) => {
   let { dataSub } = projectSub
   if (dataSub.length && dataSub[dataSub.length - 1].id !== 'add') {
     dataSub.push({
@@ -47,6 +48,9 @@ const ProjectSub = ({projectSub, loading}) => {
   const itemClick = (e) => {
     console.log(e)
   }
+  const addGroup = () => {
+    dispatch(routerRedux.push('/project/addGroup'))
+  }
   return (
     <div className={styles.filterCardList}>
       <List
@@ -75,7 +79,7 @@ const ProjectSub = ({projectSub, loading}) => {
                     />
                   </div>
                 </Card> :
-                <Card hoverable className={styles.addCard}>
+                <Card hoverable onClick={addGroup} className={styles.addCard}>
                   <Icon type="plus" />
                   <p className={styles.text}>
                     新增项目分组

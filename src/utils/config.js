@@ -28,6 +28,8 @@ module.exports = {
     projectMenu: `${APIV1}/project/menu`,
     projectList: `${APIV1}/project/list`,
     projectSub: `${APIV1}/project/sub`,
+    busGroup: `${APIV1}/busGroup`,
+    head: `${APIV1}/head`,
     projectInterface: `${APIV1}/project/interface`,
     projectDataModal: `${APIV1}/project/dataModal`,
     projectGroup: `${APIV1}/project/group`,
