@@ -6,19 +6,24 @@ import {connect} from 'dva'
 import styles from './projectSub.less'
 
 const formatWan = (val) => {
-  const v = val * 1;
-  if (!v || isNaN(v)) return '';
+  const v = val * 1
+  if (!v || isNaN(v)) return ''
 
-  let result = val;
+  let result = val
   if (val > 10000) {
     result = Math.floor(val / 10000);
     result = <span>{result}<em className={styles.wan}>万</em></span>;
   }
-  return result;
-};
+  return result
+}
 
-const ProjectSub = ({project, loading}) => {
-  let { dataSub } = project
+const ProjectSub = ({projectSub, loading}) => {
+  let { dataSub } = projectSub
+  if (dataSub.length && dataSub[dataSub.length - 1].id !== 'add') {
+    dataSub.push({
+      id: 'add',
+    })
+  }
   const listProps = {
     rowKey: 'id',
     style: { marginTop: 24 },
@@ -27,45 +32,56 @@ const ProjectSub = ({project, loading}) => {
     dataSource: dataSub,
   }
 
-  const CardInfo = ({ activeUser, newUser }) => (
+  const CardInfo = ({ activeInterface, newInterface }) => (
     <div className={styles.cardInfo}>
       <div>
-        <p>活跃用户</p>
-        <p>{activeUser}</p>
+        <p>接口数量</p>
+        <p>{activeInterface}</p>
       </div>
       <div>
-        <p>新增用户</p>
-        <p>{newUser}</p>
+        <p>新增接口</p>
+        <p>{newInterface}</p>
       </div>
     </div>
   );
-
+  const itemClick = (e) => {
+    console.log(e)
+  }
   return (
     <div className={styles.filterCardList}>
       <List
         {...listProps}
         renderItem={item => (
-          <List.Item key={item.id}>
-            <Card
-              hoverable
-              bodyStyle={{ paddingBottom: 20 }}
-              actions={[
-                <Tooltip title="下载"><Icon type="download" /></Tooltip>,
-                <Tooltip title="编辑"><Icon type="edit" /></Tooltip>,
-                <Tooltip title="分享"><Icon type="share-alt" /></Tooltip>,
-              ]}
-            >
-              <Card.Meta
-                avatar={<Avatar size="small" src={item.avatar} />}
-                title={item.title}
-              />
-              <div className={styles.cardItemContent}>
-                <CardInfo
-                  activeUser={formatWan(item.activeUser)}
-                  newUser={numeral(item.newUser).format('0,0')}
-                />
-              </div>
-            </Card>
+          <List.Item onClick={itemClick} key={item.id}>
+            {
+              item.id !== 'add' ?
+                <Card
+                  hoverable
+                  bodyStyle={{ paddingBottom: 20 }}
+                  actions={[
+                    <Tooltip title="异步接口"><Icon type="api" /></Tooltip>,
+                    <Tooltip title="数据模型"><Icon type="database" /></Tooltip>,
+                    <Tooltip title="接口分组"><Icon type="folder-open" /></Tooltip>,
+                  ]}
+                >
+                  <Card.Meta
+                    avatar={<Avatar size="small" src={item.avatar} />}
+                    title={item.title}
+                  />
+                  <div className={styles.cardItemContent}>
+                    <CardInfo
+                      activeInterface={formatWan(item.activeInterface)}
+                      newInterface={numeral(item.newInterface).format('0,0')}
+                    />
+                  </div>
+                </Card> :
+                <Card hoverable className={styles.addCard}>
+                  <Icon type="plus" />
+                  <p className={styles.text}>
+                    新增项目分组
+                  </p>
+                </Card>
+            }
           </List.Item>
         )}
       />
@@ -73,4 +89,4 @@ const ProjectSub = ({project, loading}) => {
   )
 }
 
-export default connect(({project, loading}) => ({project, loading}))(ProjectSub)
+export default connect(({projectSub, loading}) => ({projectSub, loading}))(ProjectSub)

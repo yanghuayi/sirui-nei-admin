@@ -71,11 +71,6 @@ const Routers = function ({ history, app }) {
     models: () => [import('./models/project')],
     component: () => import('./routes/project/'),
   })
-  const ProjectSub = dynamic({
-    app,
-    models: () => [import('./models/project')],
-    component: () => import('./routes/project/rightPage/ProjectSub'),
-  })
   return (
     <LocaleProvider locale={zhCN}>
       <ConnectedRouter history={history}>
@@ -95,8 +90,7 @@ const Routers = function ({ history, app }) {
                 />
               ))
             }
-            <Route exact path='/project' render={props => <Project apps={app} {...props} />} />
-            <Route exact path='/project/sub/:id' render={props => <ProjectSub {...props} />} />
+            <Route path="/project" render={props => <Project apps={app} {...props} />} />
             <Route component={error} />
           </Switch>
         </App>

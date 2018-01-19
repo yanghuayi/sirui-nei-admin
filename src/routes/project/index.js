@@ -1,22 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Switch, Route, Redirect} from 'dva/router'
-import {connect} from 'dva'
-import {Page} from 'components'
-import dynamic from "dva/dynamic"
+import { Switch, Route } from 'dva/router'
+import { connect } from 'dva'
+import { Page } from 'components'
+import dynamic from 'dva/dynamic'
 
 import LeftMenu from './LeftMenu'
 
 import styles from './index.less'
 
-const Project = ({apps, project, loading, match, history}) => {
-  const {menuData} = project
+const Project = ({apps, project, dispatch, loading, match}) => {
+  const { menuData, backShow } = project
   const LeftMenuProps = {
     menuData,
+    backShow,
+    dispatch,
     menuLoading: loading.effects['project/getMenu'],
-    onMenuClick(item) {
+    onMenuClick (item) {
       console.log(item)
-    }
+    },
   }
   const routes = [
     {
@@ -31,17 +33,17 @@ const Project = ({apps, project, loading, match, history}) => {
       path: `${match.path}/sub/:id`,
       component: dynamic({
         app: apps,
-        models: () => [import('models/project')],
+        models: () => [import('models/projectSub')],
         component: () => import('./rightPage/ProjectSub'),
-      })
+      }),
     },
   ]
   return (
     <Page className={styles.project}>
-      <LeftMenu {...LeftMenuProps}/>
+      <LeftMenu {...LeftMenuProps} />
       <Switch>
         {
-          routes.map(({path, component}, key) => (
+          routes.map(({ path, component }, key) => (
             <Route
               key={key}
               exact
@@ -56,10 +58,12 @@ const Project = ({apps, project, loading, match, history}) => {
 }
 
 Project.propTypes = {
+  apps: PropTypes.object,
   project: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
+  match: PropTypes.object,
 }
 
-export default connect(({app, project, loading}) => ({app, project, loading}))(Project)
+export default connect(({ project, loading}) => ({ project, loading}))(Project)

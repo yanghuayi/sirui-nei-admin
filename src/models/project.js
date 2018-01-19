@@ -1,33 +1,40 @@
-import queryString from 'query-string'
-import {config} from 'utils'
+import { config } from 'utils'
 
 import * as projectService from 'services/project'
 
-const {getMenu, getList, getSub} = projectService
+const {getMenu, getList} = projectService
 
 export default {
   namespace: 'project',
 
   state: {
-    menuState: true,
+    backShow: false,
     menuData: [],
     dataSource: [],
-    dataSub: [],
   },
 
   subscriptions: {
     setup ({ dispatch, history }) {
+      let i = 1
       history.listen((location) => {
-        if (location.pathname === '/project') {
+        if (location.pathname.indexOf('/project') !== -1 && i < 2) {
           dispatch({
             type: 'getMenu',
           })
+          i++
+        }
+        if (location.pathname === '/project') {
           dispatch({
             type: 'getList',
           })
-        } else if (location.pathname.indexOf('/project/sub') !== -1) {
+        }
+        if (location.pathname.indexOf('/project/') !== -1) {
           dispatch({
-            type: 'getSub'
+            type: 'backShow',
+          })
+        } else {
+          dispatch({
+            type: 'backHidden',
           })
         }
       })
@@ -43,21 +50,27 @@ export default {
       const data = yield call(getList, payload)
       yield put({type: 'dataSave', payload: data.data})
     },
-    * getSub ({payload = {}}, {call, put}) {
-      const data = yield call(getSub, payload)
-      yield put({type: 'saveSub', payload: data.data})
+    * backShow (_, {put}) {
+      yield put({type: 'backSwitch', payload: true})
+    },
+    * backHidden (_, {put}) {
+      yield put({type: 'backSwitch', payload: false})
     },
   },
 
   reducers: {
     menuUpdate(state, {payload}) {
-      return {...state, menuData: payload}
+      if (!state.menuData.length) {
+        return {...state, menuData: payload}
+      } else {
+        return { ...state }
+      }
     },
     dataSave(state, {payload}) {
       return {...state, dataSource: payload}
     },
-    saveSub(state, {payload}) {
-      return {...state, dataSub: payload}
+    backSwitch(state, {payload}) {
+      return {...state, backShow: payload}
     },
   },
 }

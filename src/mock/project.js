@@ -12,10 +12,10 @@ let menuData = Mock.mock({
         {
           id: '@id',
           name: '@ctitle',
-        }
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ],
 })
 
 const menu = menuData.list
@@ -29,7 +29,7 @@ const titles = [
   '思锐云警管理平台',
   'Vue',
   'Webpack',
-];
+]
 const avatars = [
   'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png', // Alipay
   'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png', // Angular
@@ -39,7 +39,7 @@ const avatars = [
   'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png', // React
   'https://gw.alipayobjects.com/zos/rmsportal/ComBAopevLwENQdKWiIn.png', // Vue
   'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png', // Webpack
-];
+]
 
 const avatars2 = [
   'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
@@ -52,21 +52,21 @@ const avatars2 = [
   'https://gw.alipayobjects.com/zos/rmsportal/ZpBqSxLxVEXfcUNoPKrz.png',
   'https://gw.alipayobjects.com/zos/rmsportal/laiEnJdGHVOhJrUShBaJ.png',
   'https://gw.alipayobjects.com/zos/rmsportal/UrQsqscbKEpNuJcvBZBu.png',
-];
+]
 
 const covers = [
   'https://gw.alipayobjects.com/zos/rmsportal/uMfMFlvUuceEyPpotzlq.png',
   'https://gw.alipayobjects.com/zos/rmsportal/iZBVOIhGJiAnhplqjvZW.png',
   'https://gw.alipayobjects.com/zos/rmsportal/uVZonEtjWwmUZPBQfycs.png',
   'https://gw.alipayobjects.com/zos/rmsportal/gLaIAoVWTtLbBWZNYEMg.png',
-];
+]
 const desc = [
   '那是一种内在的东西， 他们到达不了，也无法触及的',
   '希望是一个好东西，也许是最好的，好东西是不会消亡的',
   '生命就像一盒巧克力，结果往往出人意料',
   '城镇中有那么多的酒馆，她却偏偏走进了我的酒馆',
   '那时候我只会想自己想要什么，从不想自己拥有什么',
-];
+]
 
 const user = [
   '付小小',
@@ -79,10 +79,10 @@ const user = [
   '乐哥',
   '谭小仪',
   '仲尼',
-];
+]
 
-export function projectList(count) {
-  const list = [];
+export function projectList (count) {
+  const list = []
   for (let i = 0; i < count; i += 1) {
     list.push({
       id: `${i}`,
@@ -98,8 +98,8 @@ export function projectList(count) {
       createdAt: new Date(new Date().getTime() - (1000 * 60 * 60 * 2 * i)),
       subDescription: desc[i % 5],
       description: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。',
-      activeUser: Math.ceil(Math.random() * 100000) + 100000,
-      newUser: Math.ceil(Math.random() * 1000) + 1000,
+      activeInterface: Math.ceil(Math.random() * 1000) + 100,
+      newInterface: Math.ceil(Math.random() * 100) + 10,
       star: Math.ceil(Math.random() * 100) + 100,
       like: Math.ceil(Math.random() * 100) + 100,
       message: Math.ceil(Math.random() * 10) + 10,
@@ -118,10 +118,10 @@ export function projectList(count) {
           name: '董娜娜',
         },
       ],
-    });
+    })
   }
 
-  return list;
+  return list
 }
 
 const interfaceList = Mock.mock({
@@ -136,14 +136,14 @@ const interfaceList = Mock.mock({
       head: '@cname',
       creator: '@cname',
       creatTime: '@datetime',
-    }
-  ]
+    },
+  ],
 })
 
 module.exports = {
   [`GET ${apiPrefix}/project/menu`] (req, res) {
     res.status(200).json({
-      data: menu
+      data: menu,
     })
   },
 
@@ -161,19 +161,19 @@ module.exports = {
       }
     }
     res.status(200).json({
-      data: newData
+      data: newData,
     })
   },
 
   [`GET ${apiPrefix}/project/list`] (req, res) {
     res.status(200).json({
-      data: projectList(8)
+      data: projectList(8),
     })
   },
 
   [`GET ${apiPrefix}/project/sub`] (req, res) {
     res.status(200).json({
-      data: projectList(4)
+      data: projectList(5),
     })
   },
 }
