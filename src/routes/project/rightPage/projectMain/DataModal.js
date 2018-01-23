@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { Table, Input, Card, Button } from 'antd'
 import { Link } from 'dva/router'
 
-import { getDataModal } from '../../services/api'
+import { getDataModal } from 'services/project'
 import styles from './dataModal.less'
 
 const ButtonGroup = Button.Group
@@ -23,7 +23,7 @@ export default class DataModal extends PureComponent {
     this.setState({ loading: true })
     getDataModal().then((ret) => {
       this.setState({
-        data: ret.datatypes,
+        data: ret.data,
         loading: false,
       })
     })

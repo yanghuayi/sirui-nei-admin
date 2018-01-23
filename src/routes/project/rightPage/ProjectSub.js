@@ -45,8 +45,8 @@ const ProjectSub = ({projectSub, loading, dispatch}) => {
       </div>
     </div>
   );
-  const itemClick = (e) => {
-    console.log(e)
+  const itemClick = (id) => {
+    dispatch(routerRedux.push(`/project/detail?id=${id}`))
   }
   const addGroup = () => {
     dispatch(routerRedux.push('/project/addGroup'))
@@ -56,7 +56,7 @@ const ProjectSub = ({projectSub, loading, dispatch}) => {
       <List
         {...listProps}
         renderItem={item => (
-          <List.Item onClick={itemClick} key={item.id}>
+          <List.Item onClick={() => itemClick(item.id)} key={item.id}>
             {
               item.id !== 'add' ?
                 <Card

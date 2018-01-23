@@ -37,6 +37,20 @@ const Project = ({apps, project, dispatch, loading, match}) => {
         component: () => import('./rightPage/ProjectSub'),
       }),
     },
+    {
+      path: `${match.path}/detail`,
+      component: dynamic({
+        app: apps,
+        component: () => import('./rightPage/projectMain/index'),
+      }),
+    },
+    {
+      path: `${match.path}/interfaceDetail`,
+      component: dynamic({
+        app: apps,
+        component: () => import('./rightPage/InterfaceDetail'),
+      }),
+    },
   ]
   return (
     <Page className={styles.project}>

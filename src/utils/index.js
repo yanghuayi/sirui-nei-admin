@@ -99,6 +99,15 @@ const arrayToTree = (array, id = 'id', pid = 'pid', children = 'children') => {
   return result
 }
 
+/**
+ * 返回数据类型
+ * @param {*值} val
+ * @returns{input} 数字 字符 {object} 对象 {array} 数组 {boolean} 布尔
+ */
+function getType(val) {
+  return "input";
+}
+
 module.exports = {
   config,
   request,
@@ -107,4 +116,5 @@ module.exports = {
   queryURL,
   queryArray,
   arrayToTree,
+  getType,
 }

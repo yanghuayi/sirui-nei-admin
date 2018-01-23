@@ -30,6 +30,7 @@ export default {
       extraBabelPlugins: [
         "dva-hmr",
         "transform-runtime",
+        "transform-decorators-legacy",
         [
           "import", {
             "libraryName": "antd",
@@ -41,6 +42,7 @@ export default {
     production: {
       extraBabelPlugins: [
         "transform-runtime",
+        "transform-decorators-legacy",
         [
           "import", {
             "libraryName": "antd",
