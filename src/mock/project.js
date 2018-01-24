@@ -3,7 +3,7 @@ const config = require('../utils/config')
 
 const { apiPrefix } = config
 
-let menuData = Mock.mock({
+let menuData = Mock.mock({  
   'list|4-6': [
     {
       id: '@id',

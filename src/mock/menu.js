@@ -24,6 +24,14 @@ let database = [
     route: '/project/sub/:id',
   },
   {
+    id: '82',
+    mpid: '-1',
+    bpid: '8',
+    name: '新增接口',
+    icon: 'plus',
+    route: '/project/addGroup',
+  },
+  {
     id: '2',
     bpid: '1',
     name: 'Users',

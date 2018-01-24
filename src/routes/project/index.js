@@ -37,6 +37,14 @@ const Project = ({apps, project, dispatch, loading, match}) => {
         component: () => import('./rightPage/ProjectSub'),
       }),
     },
+    {
+      path: `${match.path}/addGroup`,
+      component: dynamic({
+        app: apps,
+        models: () => [import('models/addGroup')],
+        component: () => import('./rightPage/AddGroup'),
+      }),
+    },
   ]
   return (
     <Page className={styles.project}>

@@ -46,7 +46,7 @@ const ProjectSub = ({projectSub, loading, dispatch}) => {
     </div>
   );
   const itemClick = (e) => {
-    console.log(e)
+    console.log(1)
   }
   const addGroup = () => {
     dispatch(routerRedux.push('/project/addGroup'))

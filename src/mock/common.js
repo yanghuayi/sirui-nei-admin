@@ -30,7 +30,7 @@ let postId = 0
 const posts = Mock.mock({
   'data|100': [
     {
-      id () {
+      id() {
         postId += 1
         return postId + 10000
       },
@@ -47,7 +47,7 @@ const posts = Mock.mock({
           + '"Private"])')
       },
       date: '@dateTime',
-      image () {
+      image() {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.author.substr(0, 1))
       },
     },

@@ -1,7 +1,7 @@
 import { request, config } from 'utils'
 
 const { api } = config
-const { projectMenu, projectList, projectSub, projectInterface, projectDataModal, projectGroup, interfaceDetail, dataModalDetail, busGroup, head } = api
+const { projectMenu, projectList, projectSub, projectInterface, projectDataModal, projectGroup, interfaceDetail, dataModalDetail, BusData, HeadData } = api
 
 export async function getMenu (params) {
   return request({
@@ -69,7 +69,7 @@ export async function getDataModalDetail (params) {
 
 export async function getBusGroup (params) {
   return request({
-    url: busGroup,
+    url: BusData,
     method: 'get',
     data: params,
   })
@@ -77,7 +77,7 @@ export async function getBusGroup (params) {
 
 export async function getHead (params) {
   return request({
-    url: head,
+    url: HeadData,
     method: 'get',
     data: params,
   })
