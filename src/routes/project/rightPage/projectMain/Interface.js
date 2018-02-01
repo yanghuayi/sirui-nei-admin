@@ -4,14 +4,11 @@ import { Link } from 'dva/router'
 import PropTypes from 'prop-types'
 import { config } from 'utils'
 import { Tag } from 'antd'
-import FilterTable from 'components/FilterTable/FilterTable'
+import { FilterTable } from 'components'
 
 import styles from './interface.less'
 
 const { APIV1 } = config
-@connect(state => ({
-  interface: state.interface,
-}))
 
 export default class Interface extends PureComponent {
   constructor (props) {

@@ -9,6 +9,7 @@ import * as MyLayout from './Layout/index.js'
 import Page from './Page'
 import AvatarList from './AvatarList/'
 import layer from './layer'
+import FilterTable from './FilterTable/FilterTable'
 
 export {
   MyLayout,
@@ -22,4 +23,5 @@ export {
   layer,
   Page,
   AvatarList,
+  FilterTable,
 }
