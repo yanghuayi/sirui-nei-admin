@@ -67,9 +67,6 @@ class DataTable extends React.Component {
   }
 
   fetch = (type) => {
-    if (type == 'init' && this.state.dataSource.length) {
-      return false
-    }
     const { fetch: { url, data, dataKey } } = this.props
     const { fetchData } = this.state
     this.setState({ loading: true })

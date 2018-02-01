@@ -70,7 +70,7 @@ export default class DataModal extends PureComponent {
     const extraContent = (
       <div className={styles.extraContent}>
         <ButtonGroup>
-          <Link to="attrAdd"><Button type="primary">新建模型</Button></Link>
+          <Link to="attrAdd"><Button className={styles.addModal} type="primary">新建模型</Button></Link>
           <Button onClick={this.handleAdd} type="primary" disabled={!hasSelected}>删除</Button>
         </ButtonGroup>
         <Search
