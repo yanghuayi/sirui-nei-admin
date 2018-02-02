@@ -180,38 +180,38 @@ const interfaceDetail = {
       { name: '', value: '', decs: '' }
     ],
     data: [
-      { name: 'total', type: 'Number', decs: '总数', isRequired: 1, defaultValue: '', rules: '' },
+      { id: 1, name: 'total', type: 'Number', decs: '总数', isRequired: 1, defaultValue: '', rules: '' },
       {
-        name: 'result', type: 'Object', decs: '返回状态', isRequired: 1, defaultValue: '', rules: '',
+        id: 2, name: 'result', type: 'Object', decs: '返回状态', isRequired: 1, defaultValue: '', rules: '',
         children: [
-          { name: 'resultCode', type: 'Number', decs: '返回状态码', isRequired: 1, defaultValue: '', rules: '', },
-          { name: 'resultMessage', type: 'String', decs: '返回状态信息', isRequired: 1, defaultValue: '', rules: '', },
+          { id: 21, name: 'resultCode', type: 'Number', decs: '返回状态码', isRequired: 1, defaultValue: '', rules: '', },
+          { id: 22, name: 'resultMessage', type: 'String', decs: '返回状态信息', isRequired: 1, defaultValue: '', rules: '', },
         ]
       },
-      { name: 'sort', type: 'Number', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
-      { name: 'entity', type: 'Object', decs: '返回数据', isRequired: 1, defaultValue: '', rules: '',
+      { id: 3, name: 'sort', type: 'Number', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
+      { id: 4, name: 'entity', type: 'Object', decs: '返回数据', isRequired: 1, defaultValue: '', rules: '',
         children: [
-          { name: 'lastPage', type: 'Boolean', decs: '是否为最后一页', isRequired: 1, defaultValue: false, rules: '', },
-          { name: 'pageSize', type: 'Number', decs: '每页数据长度', isRequired: 1, defaudefaultValuelt: 10, rules: '', },
-          { name: 'pageNumber', type: 'Number', decs: '当前页码', isRequired: 1, defaultValue: 1, rules: '', },
-          { name: 'firstPage', type: 'String', decs: '是否为第一页', isRequired: 1, defaultValue: true, rules: '', },
-          { name: 'list', type: 'Array', decs: '数据List', isRequired: 1, defaultValue: '2017-07-13 09:54:44', rules: '',
+          { id: 41, name: 'lastPage', type: 'Boolean', decs: '是否为最后一页', isRequired: 1, defaultValue: false, rules: '', },
+          { id: 42, name: 'pageSize', type: 'Number', decs: '每页数据长度', isRequired: 1, defaudefaultValuelt: 10, rules: '', },
+          { id: 43, name: 'pageNumber', type: 'Number', decs: '当前页码', isRequired: 1, defaultValue: 1, rules: '', },
+          { id: 44, name: 'firstPage', type: 'String', decs: '是否为第一页', isRequired: 1, defaultValue: true, rules: '', },
+          { id: 45, name: 'list', type: 'Array', decs: '数据List', isRequired: 1, defaultValue: '2017-07-13 09:54:44', rules: '',
             children: [
-              { name: 'create_time', type: 'String', decs: '创建时间', isRequired: 1, defaultValue: '2017-07-13 09:54:44', rules: '', },
-              { name: 'creator', type: 'String', decs: '创建者', isRequired: 1, defaultValue: '', rules: '', },
-              { name: 'levelcode', type: 'String', decs: '机构的LevelCode', isRequired: 1, defaultValue: '', rules: '', },
-              { name: 'memo', type: 'String', decs: '备注', isRequired: 1, defaultValue: '', rules: '', },
-              { name: 'name', type: 'String', decs: '机构名称', isRequired: 1, defaultValue: '成都集团', rules: '', },
-              { name: 'orgid', type: 'Number', decs: '机构ID', isRequired: 1, defaultValue: '', rules: '', }
+              { id: 451, name: 'create_time', type: 'String', decs: '创建时间', isRequired: 1, defaultValue: '2017-07-13 09:54:44', rules: '', },
+              { id: 452, name: 'creator', type: 'String', decs: '创建者', isRequired: 1, defaultValue: '', rules: '', },
+              { id: 453, name: 'levelcode', type: 'String', decs: '机构的LevelCode', isRequired: 1, defaultValue: '', rules: '', },
+              { id: 454, name: 'memo', type: 'String', decs: '备注', isRequired: 1, defaultValue: '', rules: '', },
+              { id: 455, name: 'name', type: 'String', decs: '机构名称', isRequired: 1, defaultValue: '成都集团', rules: '', },
+              { id: 456, name: 'orgid', type: 'Number', decs: '机构ID', isRequired: 1, defaultValue: '', rules: '', }
             ]
           },
-          { name: 'totalRow', type: 'Number', decs: '数据总数', isRequired: 1, defaultValue: 0, rules: '', },
-          { name: 'totalPage', type: 'Number', decs: '页面总数', isRequired: 1, defaultValue: 0, rules: '', },
+          { id: 42, name: 'totalRow', type: 'Number', decs: '数据总数', isRequired: 1, defaultValue: 0, rules: '', },
+          { id: 43, name: 'totalPage', type: 'Number', decs: '页面总数', isRequired: 1, defaultValue: 0, rules: '', },
         ]
       },
-      { name: 'sort', type: 'Number', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
-      { name: 'option', type: 'Variable', decs: '', isRequired: 1, defaultValue: '', rules: '', },
-      { name: 'rows', type: 'Array', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
+      { id: 5, name: 'sort', type: 'Number', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
+      { id: 6, name: 'option', type: 'Variable', decs: '', isRequired: 1, defaultValue: '', rules: '', },
+      { id: 7, name: 'rows', type: 'Array', decs: '排序', isRequired: 1, defaultValue: '', rules: '', },
     ]
   }
 }

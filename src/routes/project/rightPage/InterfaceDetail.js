@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
-import { Card, Form, Input, Select, Spin, Table } from 'antd'
+import { Card, Form, Input, Select, Spin, Table, Button } from 'antd'
 import queryString from 'query-string'
 import { config, request } from 'utils'
-import EditableCell from 'components/EditableCell/EditableCell'
+import { EditableCell, DropOption } from 'components'
 
 import styles from './interfaceDetail.less'
 
@@ -12,10 +12,12 @@ const Option = Select.Option
 class DetailInterface extends PureComponent {
   constructor (props) {
     super(props)
+    const self = this
     const option = [
       { value: 0, label: '否' },
       { value: 1, label: '是' },
     ]
+    const opreat = [{ key: 1, name: '新增' }, { key: 2, name: '删除' }]
     this.state = {
       detailLoading: true,
       tabList: [
@@ -86,6 +88,14 @@ class DetailInterface extends PureComponent {
             <EditableCell value={text} type="input" />
           )
         },
+      }, {
+        title: '操作',
+        dataIndex: 'opreat',
+        render (text, record) {
+          return (
+            <DropOption onMenuClick={e => self.menuClick(e, record)} menuOptions={opreat} />
+          )
+        }
       }],
     }
   }
@@ -103,27 +113,30 @@ class DetailInterface extends PureComponent {
     })
   }
 
+  menuClick (e, record) {
+    console.log(record);
+  }
+
   onTabChange(value) {
     console.log(value)
     this.setState({
     })
   }
 
-  expandedRowRender = (record) => {
-    const { columns } = this.state
-    if (record.childern) {
-      return (
-        <Table
-          rowKey={record => record.name}
-          columns={columns}
-          expandedRowRender={this.expandedRowRender}
-          dataSource={record.childern}
-          pagination={false}
-        />
-      )
-    } else {
-      return null
-    }
+  reqAdd () {
+    let { pageData } = this.state
+    pageData.request.data.push({ id: 7, name: '新增', type: '', decs: '。。。', isRequired: 1, defaultValue: '', rules: '', })
+    this.setState({
+      pageData: pageData,
+    })
+  }
+
+  resAdd () {
+    let { pageData } = this.state
+    pageData.response.data.push({ id: 7, name: '新增', type: '', decs: '。。。', isRequired: 1, defaultValue: '', rules: '', })
+    this.setState({
+      pageData: pageData,
+    })
   }
 
   contentList = (key) => {
@@ -144,6 +157,9 @@ class DetailInterface extends PureComponent {
             <Table columns={columns} dataSource={this.state.pageData.request.data} rowKey={record => record.name} pagination={false} />
           </div>
         </div> : <Spin /> }
+        <div className={styles.btnWrap}>
+          <Button type="primary" onClick={this.reqAdd}>新增</Button>
+        </div>
       </div>,
       response:
         <div className={styles.responseWrap}>
@@ -151,9 +167,13 @@ class DetailInterface extends PureComponent {
             response ?
               <div className={styles.tableWrap}>
                 <Table columns={columns} dataSource={this.state.pageData.response.data} rowKey={record => record.name} pagination={false} />
+
               </div>
               : <Spin />
           }
+          <div className={styles.btnWrap}>
+            <Button type="primary" onClick={this.resAdd}>新增</Button>
+          </div>
         </div>
     }
     return List[key]
