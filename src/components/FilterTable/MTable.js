@@ -33,37 +33,40 @@ class DataTable extends React.Component {
 
   componentDidMount () {
     if (this.props.fetch) {
-      this.fetch()
+      this.fetch('init')
     }
   }
 
   componentWillReceiveProps (nextProps) {
     if (JSON.stringify(this.state.fetch.data) === JSON.stringify(nextProps.fetch.data)) {
-      console.log('no change')
-      return
+      return false
     }
     this.setState({
       fetch: nextProps.fetch,
-    })
-    this.fetch()
-  }
-
-  handleTableChange = (pagination, filters) => {
-    const pager = this.state.pagination
-    pager.current = pagination.current
-    this.setState({
-      pagination: pager,
-      fetchData: {
-        rows: pagination.pageSize,
-        page: pagination.current,
-        ...filters,
-      },
     }, () => {
-      this.fetch()
+      this.fetch('update')
     })
   }
 
-  fetch = () => {
+  handleTableChange = (pagination, filters) => { // 第三个参数 sorter 排序
+    let pager = this.state.pagination
+    let { fetchData } = this.state
+    if (pager.current !== pagination.current || fetchData.rows !== pagination.pageSize || fetchData.page !== pagination.current) {
+      pager.current = pagination.current
+      this.setState({
+        pagination: pager,
+        fetchData: {
+          rows: pagination.pageSize,
+          page: pagination.current,
+          ...filters,
+        },
+      }, () => {
+        this.fetch('change')
+      })
+    }
+  }
+
+  fetch = (type) => {
     const { fetch: { url, data, dataKey } } = this.props
     const { fetchData } = this.state
     this.setState({ loading: true })

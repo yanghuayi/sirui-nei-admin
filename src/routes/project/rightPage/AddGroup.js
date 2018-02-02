@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Select, Button } from 'antd'
-import {connect} from 'dva'
+import { connect } from 'dva'
 import { routerRedux } from 'dva/router'
 
 import styles from './addGroup.less'
