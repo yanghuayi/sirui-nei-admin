@@ -9,7 +9,6 @@ import styles from './projectList.less'
 
 const ProjectList = ({project, loading, match}) => {
   let {dataSource} = project
-  console.log(project)
   const listProps = {
     rowKey: 'id',
     loading: loading.effects['project/getList'],

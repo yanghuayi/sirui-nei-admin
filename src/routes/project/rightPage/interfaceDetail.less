@@ -1,0 +1,34 @@
+.interDetailWrap {
+  height: e('calc(100vh - 86px)');
+  overflow: auto;
+  .header {
+    .backBtn {
+      font-size: 36px;
+    }
+  }
+  input, textarea, .ant-select-selection__rendered {
+    border-color: #fff;
+    background: none;
+    &:focus {
+      background-color: #fff;
+    }
+  }
+  input:hover, textarea:hover {
+    border: 1px solid #dcdcdc;
+  }
+  .topForm {
+    margin-bottom: 20px;
+  }
+  .sideTab {
+    :global {
+      .ant-card-head {
+        background-color: #f0f2f5;
+      }
+    }
+  }
+}
+.tableWrap {
+  margin-top: 0;
+  height: e('calc(100vh - 360px)');
+  overflow: auto;
+}

@@ -38,11 +38,24 @@ const Project = ({apps, project, dispatch, loading, match}) => {
       }),
     },
     {
-      path: `${match.path}/addGroup`,
+      path: `${match.path}/addInterface`,
       component: dynamic({
         app: apps,
-        models: () => [import('models/addGroup')],
-        component: () => import('./rightPage/AddGroup'),
+        component: () => import('./rightPage/AddInterface'),
+      }),
+    },
+    {
+      path: `${match.path}/detail`,
+      component: dynamic({
+        app: apps,
+        component: () => import('./rightPage/projectMain/index'),
+      }),
+    },
+    {
+      path: `${match.path}/interfaceDetail`,
+      component: dynamic({
+        app: apps,
+        component: () => import('./rightPage/InterfaceDetail'),
       }),
     },
   ]

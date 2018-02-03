@@ -30,6 +30,8 @@ module.exports = {
     projectSub: `${APIV1}/project/sub`,
     BusData: `${APIV1}/BusData`,
     HeadData: `${APIV1}/HeadData`,
+    AddInterface: `${APIV1}/project/addInterface`,
+    AddInterfaceRequest: `${APIV1}/project/addInterfaceRequest`,
     projectInterface: `${APIV1}/project/interface`,
     projectDataModal: `${APIV1}/project/dataModal`,
     projectGroup: `${APIV1}/project/group`,

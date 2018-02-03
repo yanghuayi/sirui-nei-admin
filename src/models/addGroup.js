@@ -30,6 +30,7 @@ export default {
   effects: {
     * getBusGroup({ payload = {} }, { call, put }) {
       const data = yield call(getBusGroup, payload)
+      console.log(data.list)
       yield put({ type: 'saveBus', payload: data.list })
     },
     * getHead({ payload = {} }, { call, put }) {

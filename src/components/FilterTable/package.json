@@ -1,0 +1,6 @@
+{
+  "name": "FilterTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FilterTable.js"
+}
