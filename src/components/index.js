@@ -10,7 +10,7 @@ import Page from './Page'
 import AvatarList from './AvatarList/'
 import layer from './layer'
 import EditableCell from './EditableCell/EditableCell'
-
+import FilterTable from './FilterTable/FilterTable'
 export {
   MyLayout,
   DataTable,
@@ -24,4 +24,5 @@ export {
   Page,
   AvatarList,
   EditableCell,
+  FilterTable,
 }
