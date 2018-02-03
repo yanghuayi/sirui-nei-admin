@@ -48,9 +48,6 @@ const ProjectSub = ({projectSub, loading, dispatch}) => {
   const itemClick = (id) => {
     dispatch(routerRedux.push(`/project/detail?id=${id}`))
   }
-  const addGroup = () => {
-    dispatch(routerRedux.push('/project/addGroup'))
-  }
   return (
     <div className={styles.filterCardList}>
       <List
@@ -79,7 +76,7 @@ const ProjectSub = ({projectSub, loading, dispatch}) => {
                     />
                   </div>
                 </Card> :
-                <Card hoverable onClick={addGroup} className={styles.addCard}>
+                <Card hoverable className={styles.addCard}>
                   <Icon type="plus" />
                   <p className={styles.text}>
                     新增项目分组

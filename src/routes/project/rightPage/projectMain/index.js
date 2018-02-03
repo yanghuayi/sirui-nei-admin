@@ -15,8 +15,8 @@ const Index = ({ dispatch, loading, projectDetail}) => {
     tableOpreat (e, record) {
       console.log(record)
     },
-    interfaceAdd () {
-      dispatch(routerRedux.push('/project/interfaceAdd'))
+    addFun () {
+      dispatch(routerRedux.push('/project/addInterface'))
     },
   }
   return (

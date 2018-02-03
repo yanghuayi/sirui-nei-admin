@@ -202,7 +202,8 @@ export default class Filter extends Component {
           </Row>
         </Form>
         <div className={styles.tableBtn}>
-          { this.state.addBtn ? <Button onClick={addFun} icon="plus">新增</Button> : null }
+          {/* { this.state.addBtn ? <Button onClick={addFun} icon="plus">新增</Button> : null } */}
+          <Button onClick={addFun} icon="plus">新增</Button>
           <Tooltip placement="bottom" title={'导出表格'}>
             <Button shape="circle" onClick={() => this.saveTable()} icon="export" />
           </Tooltip>

@@ -38,6 +38,13 @@ const Project = ({apps, project, dispatch, loading, match}) => {
       }),
     },
     {
+      path: `${match.path}/addInterface`,
+      component: dynamic({
+        app: apps,
+        component: () => import('./rightPage/AddInterface'),
+      }),
+    },
+    {
       path: `${match.path}/detail`,
       component: dynamic({
         app: apps,

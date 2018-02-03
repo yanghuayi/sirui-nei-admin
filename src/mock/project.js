@@ -81,7 +81,7 @@ const user = [
   '仲尼',
 ]
 
-export function projectList (count) {
+export function projectList(count) {
   const list = []
   for (let i = 0; i < count; i += 1) {
     list.push({
@@ -124,7 +124,7 @@ export function projectList (count) {
   return list
 }
 
-const interfaceList = Mock.mock({
+let interfaceList = Mock.mock({
   'list|40-60': [
     {
       id: '@id',
@@ -240,13 +240,13 @@ const dataModal = [{
 }]
 
 module.exports = {
-  [`GET ${apiPrefix}/project/menu`] (req, res) {
+  [`GET ${apiPrefix}/project/menu`](req, res) {
     res.status(200).json({
       data: menu,
     })
   },
 
-  [`POST ${apiPrefix}/project/interface`] (req, res) {
+  [`POST ${apiPrefix}/project/interface`](req, res) {
     const { query } = req
     let newData = interfaceList.list
     for (let key in query) {
@@ -264,27 +264,44 @@ module.exports = {
     })
   },
 
-  [`GET ${apiPrefix}/project/list`] (req, res) {
+  [`GET ${apiPrefix}/project/list`](req, res) {
     res.status(200).json({
       data: projectList(8),
     })
   },
 
-  [`GET ${apiPrefix}/project/sub`] (req, res) {
+  [`GET ${apiPrefix}/project/sub`](req, res) {
     res.status(200).json({
       data: projectList(5),
     })
   },
 
-  [`POST ${apiPrefix}/project/interface/detail`] (req, res) {
+  [`POST ${apiPrefix}/project/interface/detail`](req, res) {
     res.status(200).json({
       data: interfaceDetail,
     })
   },
 
-  [`GET ${apiPrefix}/project/dataModal`] (req, res) {
+  [`GET ${apiPrefix}/project/dataModal`](req, res) {
     res.status(200).json({
       data: dataModal,
+    })
+  },
+
+  [`POST ${apiPrefix}/project/AddInterface`](req, res) {
+    const { query } = req
+    let newData = interfaceList.list
+    
+    res.status(200).json({
+      status: 0,
+      msg: '新增成功'
+    })
+  },
+
+  [`POST ${apiPrefix}/project/AddInterfaceRequest`](req, res) {
+    res.status(200).json({
+      status: 0,
+      msg: '新增成功'
     })
   },
 }
