@@ -84,7 +84,6 @@ const App = ({
       {children}
     </div>)
   }
-
   return (
     <div>
       <Loader fullScreen spinning={loading.effects['app/query']} />
